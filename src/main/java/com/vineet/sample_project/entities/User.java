@@ -20,23 +20,18 @@ public class User {
     @Column(name = "user_name", nullable = false, length = 100)
     private String name;
 
-    @ManyToOne
-    @JoinColumn(name = "company_id")
-    private Company company;
-
     @Column(nullable = false, length = 100)
     private String password;
 
     @Column(nullable = true, length = 10)
-    private int phone_no;
+    private String phone_no;
 
     @Column(nullable = true, length = 100)
     private String email;
 
-    public User(int id, String name, Company company, String password, int phone_no, String email) {
+    public User(int id, String name, String password, String phone_no, String email) {
         this.id = id;
         this.name = name;
-        this.company = company;
         this.password = password;
         this.phone_no = phone_no;
         this.email = email;
@@ -60,7 +55,6 @@ public class User {
         return "User{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", company=" + company +
                 ", password='" + password + '\'' +
                 ", phone_no=" + phone_no +
                 ", email='" + email + '\'' +

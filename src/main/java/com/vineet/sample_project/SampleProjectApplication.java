@@ -13,11 +13,4 @@ public class SampleProjectApplication {
 		SpringApplication.run(SampleProjectApplication.class, args);
 	}
 
-	@GetMapping("/greet")
-	public GreetResponse greet() {
-		return new GreetResponse("Hello");
-	}
-
-	record GreetResponse(String msg){}
-
 }
