@@ -1,6 +1,7 @@
 package com.vineet.sample_project.entities;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -11,6 +12,7 @@ import java.util.Set;
 
 @Entity
 @NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
 public class Company {
@@ -18,18 +20,19 @@ public class Company {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
+    private String CIN_No;
+
     private String name;
+
+    private String phone_no;
+
+    private String email;
 
     private String GST_no;
 
     @OneToMany(mappedBy = "company")
     private Set<ProductRegistration> products = new HashSet<>();
 
-    public Company(int id, String name, String GST_no) {
-        this.id = id;
-        this.name = name;
-        this.GST_no = GST_no;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -49,7 +52,10 @@ public class Company {
         return "Company{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", phone_no='" + phone_no + '\'' +
+                ", email='" + email + '\'' +
                 ", GST_no='" + GST_no + '\'' +
+                ", products=" + products +
                 '}';
     }
 }
